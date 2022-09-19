@@ -410,4 +410,95 @@ public void run() {
 
 프록시 서버는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네이트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용프로그램을 말한다.
 
-ㅇ
+#### **1.6 이터레이터 패턴**
+
+이터레이터 패턴은 이터레이터를 사용하여 컬렉션의 요소들에 접근하는 디자인 패턴이다.
+
+\* 이터레이터
+
+iterate : 순환하다, 반복하다
+
+반복적으로 하나하나 꺼내어 처리 가능한 컬렉션이나 sequence 들을 이터레이터 객체라고한다. 
+
+ex ) List, Set, Map, Queue 등을 말한다
+
+[##_Image|kage@mc9bB/btrMA4t0H0g/41pYQWPhNfmo06DJT1ky8K/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":450,"style":"alignLeft","width":396,"height":297}_##]
+
+이를 통해 순회할 수 있는 여러가지 자료형의 구조와는 상관없이 이터레이터라는 하나의 인터페이스로 순회가 가능하다.
+
+#### **1.7 노출 모듈 패턴**
+
+노출모듈 패턴은 즉시 실행 함수를 통해 private, public 같은 접근 제어자를 만드는 패턴을 말한다. 자바스크립트는 private나 public 같은 접근제어자가 존재하지 않고 전역 범위에서 스크립트가 실행된다. 그렇기 때문에 노출모듈 패턴을 통해 private와 public 접근 제어자를 구현하기도 한다.
+
+```
+const pukuba = (() => {
+    const a = 1
+    const b = () => 2
+    const public = {
+        c : 2, 
+        d : () => 3
+    }
+    return public 
+})() 
+console.log(pukuba)
+console.log(pukuba.a)
+// { c: 2, d: [Function: d] }
+// undefined
+```
+
+a와 b는 다른 모듈에서 사용할 수 없는 변수나 함수이며 private 범위를 가진다. c와 d는 다른 모듈에서 사용할 수 있는 변수나 함수이며 public 범위를 가진다.
+
+참고로 앞서 설명한 노출모듈 패턴을 기반으로 만든 자바스크립트 모듈 방식으로는 CJS모듈 방식이 있다.
+
+> \- public  
+> 클래스에 정의된 함수에서 접근 가능하며 자식  클래스와 외부 클래스에서 접근 가능한 범위  
+> \- protected  
+> 클래스에서 정의된 함수에서 접근 가능, 자식 클래스에서 접근 가능하지만 외부 클래스에서 접근 불가능한 범위  
+> \- private  
+> 클래스에 정의된 함수에서 접근 가능하지만 자식 클래스와 외부 클래스에서 접근 불가능한 범위  
+> \- 즉시 실행 함수  
+> 함수를 정의하자마자 바로 호출하는 함수, 초기화 코드, 라이브러리 내 전역 변수의 충돌 방지 등에 사용한다.
+
+#### **1.8 MVC 패턴**
+
+모델(Model), 뷰(View), 컨트롤러(Controller)로 이루어진 디자인 패턴이다.
+
+[##_Image|kage@cxqsls/btrMyiNlXNE/UfjuT5L8IjKFQ1PBVtWYU0/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":296,"style":"alignLeft"}_##]
+
+애플리케이션의 구성 요소를 세 가지 역할로 구분하여 개발 프로세스에서 각각의 구성 요소에만 집중해서 개발 할 수 있다. 재사용성과 확장성이 용이하다는 장점이 있고, 애플리케이션이 복잡해질수록 모델과 뷰의 관계가 복잡해지는 단점이 있다.
+
+**\- 모델**
+
+모델은 애플리 케이션의 데이터인 데이터베이스, 상수, 변수 등을 뜻한다. 
+
+예시로 사각형 모양의 박스 안에 글자가 들어 있다면 그 사각형 모양의 박스 위치 정보, 글자 내용, 글자 위치, 글자 포맷에 관한 정보를 모두 가지고 있어야한다. 뷰에서 데이터를 생성하거나 수정하면 컨트롤러를 통해 모델을 생성하거나 갱신한다.
+
+**\- 뷰**
+
+뷰는 inputbox, checkbox, textarea 등 사용자 인터페이스 요소를 나타낸다. 즉, 모델을 기반으로 사용자가 볼 수 있는 화면을 뜻한다. 모델이 가지고 있는 정보를 따로 저장하지 않아야 하며 단순히 사각형 모양 등 화면에 표시하는 정보만 가지고 있어햐 한다. 또한 변경이 일어나면 이를 컨트롤러에 전달해야한다.
+
+**\- 컨트롤러**
+
+컨트롤러는 하나 이상의 모델과 하나 이상의 뷰를 잇는 다리 역할을 하며 이벤트 등 메인 로직을 담당한다. 또한, 모델과 뷰의 생명주기도 관리하며, 모델이나 뷰의 변경 통지를 받으면 이를 해석하여 각각의 구성 용소에 해당 내용에 대해 알려준다.
+
+**1.9 MVP 패턴**
+
+MVP 패턴은 MVC 패턴으로 파생되었으며 MVC 에서 C에 해당하는 컨트롤러가 프레젠터(presenter)로 교체된 패턴이다.
+
+[##_Image|kage@VfSqu/btrMxUMDN8m/7eYGLWUkP3ePDc28qFE0DK/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":284,"style":"alignLeft","width":549,"height":260}_##]
+
+뷰와 프레젠터는 일대일 관계이기 때문에 MVC보다 더 강한 결함을 지닌 디자인 패턴이라고 볼 수 있다.
+
+**1.10 MVVM 패턴**
+
+MVVM 패턴은 MVC의 C에 해당하는 컨트롤러가 뷰모델(vicw model)로 바뀐 패턴이다.
+
+[##_Image|kage@N5aBH/btrMzQCKUJN/bKXz3WzeQBO6fcpEl80Ss1/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":162,"style":"alignLeft"}_##]
+
+여기서 뷰모델은 뷰를 더 추상화한 개층이며 mvvm 패턴은 mvc 패턴과는 다르게 커맨드와 데이터 바인딩을 가지는 것이 특징이다. 뷰와 뷰모델 사이의 양방향 데이터 바인딩을 지원하며 UI를 별도의 코드 수정 없이 재사용할 수 있고 단위 테스팅하기 쉽다는 장점이 있다.
+
+MVVM 패턴의 예: 뷰(Vue.js)는 반응형이 특징인 프론트엔드 프레임 워크이다.
+
+함수를 사용하지 않고 값 대입만으로 변수가 변경되며 양방향 바인딩, html을 토대로 컴포넌트를 구축할 수 있다는 점이 특징이다. 재사용 가능한 컴포넌트 기반으로 UI를 구축할 수 있다.
+
+[##_ImageGrid|kage@cxqsls/btrMyiNlXNE/UfjuT5L8IjKFQ1PBVtWYU0/img.jpg,kage@VfSqu/btrMxUMDN8m/7eYGLWUkP3ePDc28qFE0DK/img.jpg,kage@N5aBH/btrMzQCKUJN/bKXz3WzeQBO6fcpEl80Ss1/img.jpg|data-origin-width="600" data-origin-height="296" data-is-animation="false" width="468" height="231" style="width: 25.2427%; margin-right: 10px;" data-widthpercent="25.84" id="kEditorPhotosEditingImage-11",width="406" data-origin-width="600" data-origin-height="284" data-is-animation="false" height="192" data-widthpercent="26.94" style="width: 26.3093%; margin-right: 10px;" id="kEditorPhotosEditingImage-12",data-origin-width="600" data-origin-height="162" data-is-animation="false" width="426" style="width: 46.1224%;" data-widthpercent="47.22" id="kEditorPhotosEditingImage-13"|_##]
