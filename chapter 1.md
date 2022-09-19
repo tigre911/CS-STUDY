@@ -243,7 +243,7 @@ Factory ame ::Hi this coffee is 3000
 
 전략 패턴을 이루는 구성 요소는 다음과 같아요. 
 
-[##_Image|kage@m7wAa/btrMjhvmbuO/LKAV99kquGEtilYZevgebK/img.png|CDM|1.3|{"originWidth":1280,"originHeight":449,"style":"alignCenter","width":769}_##]
+[##_Image|kage@m7wAa/btrMjhvmbuO/LKAV99kquGEtilYZevgebK/img.png|CDM|1.3|{"originWidth":1398,"originHeight":491,"style":"alignCenter","width":769}_##]
 
 전략 패턴의 구조
 
@@ -390,4 +390,24 @@ public void run() {
 
 옵저버 패턴은 주로 이벤트 기반 시스템에 사용하며 MVC패턴에도 사용된다.
 
-,
+#### **1.5 프록시 패턴과 프록시 서버**
+
+**\- 프록시 패턴**
+
+프록시 패턴은 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴이다.
+
+[##_Image|kage@crleia/btrMvsXFDlH/3tOaGTTP0ECWtdabhrWre1/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":199,"style":"alignLeft","width":413,"height":137}_##]
+
+이를 통해 객체의 속성, 변환 등을 보완하며 보안, 데이터 검증, 캐싱, 로깅에 사용한다.
+
+이는 앞서 설명한 프록시 객체로 쓰이기도 하지만 프록시 서버로도 활용된다.
+
+\*프록시 서버에서의 캐싱
+
+캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 다시 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말한다. 이를 통해 불필요하게 외부와 연결하지않기 때문에 트래픽을 줄일 수 있다는 장점이 있다.
+
+**\- 프록시 서버**
+
+프록시 서버는 서버와 클라이언트 사이에서 클라이언트가 자신을 통해 다른 네이트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터 시스템이나 응용프로그램을 말한다.
+
+ㅇ
