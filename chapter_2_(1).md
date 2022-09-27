@@ -238,11 +238,13 @@ IP, ARP, ICMP 등이 있으며 패킷을 수신해야 할 상대의 주소를 �
 
 유선 LAN을 이루는 이더넷은 IEEE802.3이라는 프로토콜을 따르며 전이중화 통신을 쓴다.
 
-\*전이중화 통신
+**\*전이중화 통신**
 
 전이중화 통신은 양쪽 장치가 동시에 송수신할 수 있는 방식을 말한다. 이는 송신로와 수신로로 나눠서 데이터를 주고받으며 현대의  고속 이더넷은 이방식을 기반으로 통신하고 있다.
 
-\*CSMA/CD
+[##_Image|kage@cpJV81/btrM8kLVFoK/IyEBqTpag0zSYObknauSFK/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":375,"style":"alignLeft","width":382,"height":239}_##]
+
+**\*CSMA/CD**
 
 참고로 이전에는 유선 LAN에 '반이중화 통신' 중 하나인 CSMA/CD 방식을 썼다.
 
@@ -252,13 +254,15 @@ IP, ARP, ICMP 등이 있으며 패킷을 수신해야 할 상대의 주소를 �
 
 무선 LAN 장치는 수신과 송신에 같은 채널을 사용하기 때문에 반 이중화 통신을 사용한다.
 
-\*반이중화 통신
+**\*반이중화 통신**
 
 반이중화 통신은  양쪽 장치는 서로 통신할 수 있지만, 동시에는 통신할 수 없으며 한 번에 한 방향만 통신할 수 있는 방식을 말한다.
 
+[##_Image|kage@o7INg/btrM8gbFHSu/sLk4VkNyFfoOKXo4yZ27F1/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":379,"style":"alignLeft","width":368,"height":232}_##]
+
 일반적으로 장치가 신호를 수신하기 시작하면 응답하기 전에 전송이 완료될 때까지 기다려야 한다. 또한, 둘 이상의 장치가 동시에 전송하면 충돌이 발생하여 메시지가 손실되거나 왜곡될 수 있기 때문에 충돌 방지 시스템이 필요하다.
 
-\*CSMA/CA
+**\*CSMA/CA**
 
 CSMA/CA는 반이중화 통신 중 하나로 장치에서 데이터를 보내기 전에 캐리어 감지 등으로 사전에 가능한 충돌을 방지하는 방식을 사용하며 과정은 다음과 같이 이루어진다.
 
@@ -272,20 +276,109 @@ CSMA/CA는 반이중화 통신 중 하나로 장치에서 데이터를 보내기
 
 전이중화 통신은 양방향 통신이 가능하므로 충돌 가능성이 없기 때문에 충돌을 감지하거나 방지하는 메커니즘이 필요하지 않다.
 
-와이파이
+**와이파이**
 
 전자기기들이 무선 LAN 신호에 연결할 수 있게 하는 기술.
 
 유선 LAN에 흐르는 신호를 무선 LAN 신호로 바꿔준다.
 
-BSS
+**BSS**
 
 기본 서비스 집합을 의미. 단순 공유기를 통해 네트워크에 접속하는 것이 아닌 동일 BSS 내에 있는 AP들과 장치들이 서로 통신이 가능한 구조를 말한다.
 
 근거리 무선통신을 제공하고, 하나의 AP만을 기반으로 구축이 되어 있어 사용자가 한곳에서 다른 곳으로 자유롭게 이동하며 네트워크에 접속하는 것은 불가능하다.
 
-ESS 
+**ESS** 
 
 하나이상 연결된 BSS 그룹이다. 장거리 무선통신을 제공하며 BSS 보다 더 많은 가용성과 이동성을 지원한다.
 
 즉, 사용자는 한 장소에서 다른 장소로 이동하며 중단없이 네트워크에 계속 연결 할 수 있다.
+
+[##_Image|kage@9k3oK/btrM8gCHzw3/u5SXsIfFQ3kxcCkNNadzM1/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":347,"style":"alignLeft","width":431,"height":249}_##]
+
+**이더넷 프레임**
+
+참고로 데이터 링크 계층은 이더넷 프레임을 통해 전달받은 데이터의 에러를 검출하고 캡슐화하며 다음과 같은 구조를 가진다.
+
+[##_Image|kage@9U2FS/btrNb84xOBV/kdqATRtvuj185xkzl85rV0/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":138,"style":"alignLeft","width":539,"height":124}_##]
+
+• Preamble: 이더넷 프레임이 시작임을 알림.
+
+• SFD(Start Frame Delimiter): 다음 바이트부터 MAC 주소 필드가 시작됨을 알림.
+
+• DMAC, SMAC: 수신, 송신 MAC 주소.
+
+• EtherType: 데이터 계층 위의 계층인 IP 프로토콜을 정의합니다. 예를 들어 IPv4 또는 IPv6.
+
+• Payload: 전달받은 데이터
+
+• CRC: 에러 확인 비트
+
+**\* MAC 주소**
+
+컴퓨터나 노트북 등 각 장치에는 네트워크에 연결하기 위한 장치(LAN 카드)가 있는데, 이를 구별하기 위한 식별번호를 말한다. 6바이트(48비트)로 구성된다.
+
+**계층 간 데이터 송수신 과정**
+
+컴퓨터를 통해 다른 컴퓨터로 데이터를 요청한다면 예를 들어 HTTP를 통해 웹 서버에 있는 데이터를 요청한다면 다음과 같은 일이 일어난다.
+
+[##_Image|kage@bM4HXi/btrNcXBcLqw/va3s9atHNUwQjbS5UULNjK/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":480,"style":"alignLeft","width":444}_##]
+
+애플리케이션 계층에서 전송 계층으로 보내는 요청(request) 값들이 캡슐화 과정을 거쳐 전달되고, 다시 링크 계층을 통해 해당 서버와 통신을 하고, 해당 서버의 링크 계층으로부터 애플리케이션까지 비캡슐화 과정을 거쳐 데이터가 전송된다.
+
+**캡슐화 과정**
+
+캡슐화 과정은 상위 계층의 헤더와 데이터를 하위 계층의 데이터 부분에 포함시키고 해당 계층의 헤더를 삽입하는 과정을 말합니다.
+
+[##_Image|kage@dJKvEo/btrM8lD0ePi/rlipyZUomnsHiPdA9p4zkk/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":217,"style":"alignLeft","width":456,"height":165}_##]
+
+애플리케이션 계층의 데이터가 전송 계층으로 전달되면서 ‘세그먼트’ 또는 ‘데이터그램’화되며 TCP(L4) 헤더가 붙여지게 된다. 그리고 이후 인터넷 계층으로 가면서 IP(L3) 헤더가 붙여지게 되며 ‘패킷’화가 되고, 이후 링크 계층으로 전달되면서 프레임 헤더와 프레임 트레일러가 붙어 ‘프레임’화가 됨.
+
+**비캡슐화 과정**
+
+비캡슐화 과정은 하위 계층에서 상위 계층으로 가며 각 계층의 헤더 부분을 제거하는 과정을 말합니다.
+
+[##_Image|kage@TDKBa/btrNcAM1KTi/U7fDtfaHQRSAihwEfrVyEK/img.jpg|CDM|1.3|{"originWidth":600,"originHeight":217,"style":"alignLeft","width":437,"height":158}_##]
+
+이렇게 캡슐화된 데이터를 받게 되면 링크 계층에서부터 타고 올라오면서 프레임화된 데이터는 다시 패킷화를 거쳐 세그먼트, 데이터그램화를 거쳐 메시지화가 되는 비캡슐화 과정이 일어난다. 그 이후 최종적으로 사용자에게 애플리케이션의 PDU인 메시지로 전달됨.
+
+#### **2.2 PDU**
+
+네트워크의 어떠한 계층에서 계층으로 데이터가 전달될 때 한 덩어리의 단위를 PDU (Protocol Data Unit)라고 한다.
+
+PDU는 제어 관련 정보들이 포함된 ‘헤더’, 데이터를 의미하는 ‘페이로드’로 구성되어 있으며 계층마다 부르는 명칭이 다름
+
+• 애플리케이션 계층: 메시지
+
+• 전송 계층: 세그먼트(TCP), 데이터그램(UDP)
+
+• 인터넷 계층: 패킷
+
+• 링크 계층: 프레임(데이터 링크 계층), 비트(물리 계층)
+
+예를 들어 애플리케이션 계층은 ‘메시지’를 기반으로 데이터를 전달하는데, HTTP의 헤더가 문자열인 것을 예로 들 수 \\
+
+다.
+
+잠시  curl 명령어를 이용하여 [www.naver.com으로](http://www.naver.com으로) HTTP 요청을 해서 PDU 테스팅을 해보게 되면
+
+```
+Server: NWS
+Content-Type: text/html; charset=UTF-8
+Cache-Control: no-cache, no-store, must-revalidate
+Pragma: no-cache
+P3P: CP="CAO DSP CURa ADMa TAIa PSAa OUR LAW STP PHY ONL UNI PUR FIN COM NAV INT DEM STA PRE"
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=63072000; includeSubdomains
+Referrer-Policy: unsafe-url
+Content-Encoding: gzip
+Content-Length: 59601
+Date: Wed, 26 Jan 2022 05:14:10 GMT
+Connection: keep-alive
+Vary: Accept-Encoding
+```
+
+‘curl [www.naver.com](http://www.naver.com)’이란 명령어를 통해 요청했고 다음과 같은 응답헤더 값이 나오는데, 이는 모두 문자열인 것을 알 수 있다. 
+
+PDU 중 아래 계층인 비트로 송수신하는 것이 모든 PDU 중 가장 빠르고 효율성이 높다. 하지만 애플리케이션 계층에서는 문자열을 기반으로 송수신을 하는데, 그 이유는 헤더에 authorization 값 등 다른 값들을 넣는 확장이 쉽기 때문이다.
